@@ -1,0 +1,36 @@
+model:
+  d_model: 512
+  n_heads: 8
+  d_ff: 2048
+  dropout: 0.3
+  n_local_layers: 2       # HTPE Level 1
+  n_shot_layers: 2        # HTPE Level 2
+  n_scene_layers: 1       # HTPE Level 3
+  local_window_size: 8
+  gamma_init: 0.5         # DPSA saliency weight
+  sem_feat_dim: 1024      # GoogLeNet feature dim
+  sal_feat_dim: 256       # Saliency feature dim
+
+training:
+  epochs: 200
+  batch_size: 1           # 1 video per batch (variable length)
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-5
+  optimizer: Adam
+  betas: [0.9, 0.999]
+  lr_scheduler: StepLR
+  lr_step_size: 80
+  lr_gamma: 0.1
+  gradient_clip: 5.0
+
+loss:
+  lambda_diversity: 0.1
+  lambda_sparsity: 0.01
+  saliency_weight_alpha: 0.5
+  diversity_margin_tau: 1.0
+
+evaluation:
+  summary_proportion: 0.15  # 15% budget
+  n_folds: 5
+
+seed: 42
