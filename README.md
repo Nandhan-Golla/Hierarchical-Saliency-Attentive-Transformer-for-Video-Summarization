@@ -12,12 +12,16 @@ This repository contains the implementation for **HiSAT**, a novel deep learning
 
 ## Setup
 
-1. Clone the repository and install dependencies:
+1. Install `uv` if you haven't already (e.g., `curl -LsSf https://astral.sh/uv/install.sh | sh`).
+
+2. Clone the repository and install dependencies using `uv`:
    ```bash
-   pip install -r requirements.txt
+   uv venv
+   source .venv/bin/activate
+   uv pip install -r requirements.txt
    ```
 
-2. Download pre-trained models for feature extraction (GoogLeNet for semantic, TranSalNet for saliency) if extracting custom features.
+3. Download pre-trained models for feature extraction (GoogLeNet for semantic, TranSalNet for saliency) if extracting custom features.
 
 ## Usage
 
@@ -25,14 +29,14 @@ This repository contains the implementation for **HiSAT**, a novel deep learning
 
 To train the model on TVSum:
 ```bash
-python train.py --config configs/default.yaml
+uv run train.py --config configs/default.yaml
 ```
 
 ### Inference & Web UI
 
 Run the interactive Streamlit summarization app:
 ```bash
-streamlit run app.py
+uv run streamlit run app.py
 ```
 
 Upload an `.mp4` video, and the application will extract features, generate the summary, and visualize scores and shots.
