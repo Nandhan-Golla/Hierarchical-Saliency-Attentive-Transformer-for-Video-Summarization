@@ -1,7 +1,28 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "hierarchical-saliency-attentive-transformer-for-video-summarization"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "opencv-python>=4.7.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "h5py>=3.8.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "streamlit>=1.22.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+    "scikit-learn>=1.2.0",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["configs*", "paper*", "tests*"]
